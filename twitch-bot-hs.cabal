@@ -7,8 +7,8 @@ cabal-version: 1.12
 name:           twitch-bot-hs
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/twitch-bot-hs#readme>
-homepage:       https://github.com/fiuskylab/twitch-bot-hs#readme
-bug-reports:    https://github.com/fiuskylab/twitch-bot-hs/issues
+homepage:       https://github.com/githubuser/twitch-bot-hs#readme
+bug-reports:    https://github.com/githubuser/twitch-bot-hs/issues
 author:         Author name here
 maintainer:     example@example.com
 copyright:      2021 Author name here
