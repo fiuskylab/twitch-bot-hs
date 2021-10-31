@@ -1,6 +1,9 @@
 # twitch-bot-hs
 Twitch bot implementation in haskell
 
+## Reference
+- [Haskell IRC implementation](https://wiki.haskell.org/Roll_your_own_IRC_bot)
+
 ## Instructions
 1. To run the application
   - > stack run
