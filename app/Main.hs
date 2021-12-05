@@ -20,3 +20,8 @@ twitchChannel = "rafiusky" :: String
 main :: IO ()
 main = do
   h <- IRC.connectTo twitchIRC twitchIRCPort
+  IRC.write h "PASS" botOAuthToken
+  IRC.write h "NICK" botUsername
+  IRC.write h "JOIN" ("#" ++ twitchChannel)
+  IRC.listen h
+
