@@ -3,6 +3,8 @@
 -- to the IRC
 module IRC 
   ( connectTo,
+    write,
+    listen,
   ) where
 
 import System.IO
@@ -17,3 +19,18 @@ connectTo host port = do
   N.socketToHandle sock ReadWriteMode
 
 
+--    :: Our Socket -> The Command -> The Message
+write :: Handle -> String -> String -> IO ()
+write h cmd arg = do
+  let msg = cmd ++ " " ++ arg ++ "\r\n"
+  hPutStr h msg           -- Send message
+  putStr ("> " ++ msg)    -- Show sent message
+
+--     :: Our Socket
+listen :: Handle -> IO ()
+listen h = forever $ do
+    line <- hGetLine h
+    putStrLn line
+  where
+    forever :: IO () -> IO ()
+    forever a = do a; forever a
