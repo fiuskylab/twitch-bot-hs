@@ -7,7 +7,10 @@ module IRC
     listen,
   ) where
 
+import Prelude hiding (putStrLn)
 import System.IO
+import qualified Data.Text    as T
+import qualified Data.Text.IO as T
 import qualified Network.Socket as N -- network
 
 -- Setting IRC connection
@@ -30,7 +33,7 @@ write h cmd arg = do
 listen :: Handle -> IO ()
 listen h = forever $ do
     line <- hGetLine h
-    putStrLn line
+    T.putStrLn (T.pack line)
   where
     forever :: IO () -> IO ()
     forever a = do a; forever a
