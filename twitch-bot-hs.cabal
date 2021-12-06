@@ -27,6 +27,7 @@ library
   exposed-modules:
       IRC
       Lib
+      Message
   other-modules:
       Paths_twitch_bot_hs
   hs-source-dirs:
@@ -34,6 +35,7 @@ library
   build-depends:
       base >=4.7 && <5
     , network
+    , pretty-simple
     , text
   default-language: Haskell2010
 
@@ -47,6 +49,7 @@ executable twitch-bot-hs-exe
   build-depends:
       base >=4.7 && <5
     , network
+    , pretty-simple
     , text
     , twitch-bot-hs
   default-language: Haskell2010
@@ -62,6 +65,7 @@ test-suite twitch-bot-hs-test
   build-depends:
       base >=4.7 && <5
     , network
+    , pretty-simple
     , text
     , twitch-bot-hs
   default-language: Haskell2010

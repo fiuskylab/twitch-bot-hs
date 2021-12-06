@@ -9,9 +9,12 @@ module IRC
 
 import Prelude hiding (putStrLn)
 import System.IO
+import Text.Pretty.Simple (pPrint)
+import qualified Message      as M
 import qualified Data.Text    as T
 import qualified Data.Text.IO as T
 import qualified Network.Socket as N -- network
+import Data.List (init)
 
 -- Setting IRC connection
 connectTo :: N.HostName -> N.PortNumber -> IO Handle
@@ -20,7 +23,6 @@ connectTo host port = do
   sock <- N.socket (N.addrFamily addr) (N.addrSocketType addr) (N.addrProtocol addr)
   N.connect sock (N.addrAddress addr)
   N.socketToHandle sock ReadWriteMode
-
 
 --    :: Our Socket -> The Command -> The Message
 write :: Handle -> String -> String -> IO ()
@@ -34,6 +36,12 @@ listen :: Handle -> IO ()
 listen h = forever $ do
     line <- hGetLine h
     T.putStrLn (T.pack line)
+    doSomething h line
   where
     forever :: IO () -> IO ()
     forever a = do a; forever a
+
+doSomething :: Handle -> String -> IO ()
+doSomething h str = do
+  let msg = M.parseLine str
+  pPrint msg
